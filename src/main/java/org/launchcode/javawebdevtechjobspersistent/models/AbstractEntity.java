@@ -47,7 +47,4 @@ public abstract class AbstractEntity {
         return Objects.hash(id);
     }
 
-    public abstract boolean isPresent();
-
-    public abstract Object get();
 }

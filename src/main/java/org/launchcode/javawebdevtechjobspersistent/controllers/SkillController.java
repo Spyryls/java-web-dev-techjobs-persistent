@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.util.Optional;
 
@@ -18,6 +17,13 @@ public class SkillController {
 
     @Autowired
     private SkillRepository skillRepository;
+
+    @RequestMapping("")
+    public String index(Model model) {
+        model.addAttribute("title", "Applicable Skills");
+        model.addAttribute("skills", skillRepository.findAll());
+        return "skills/index";
+    }
 
     @GetMapping("add")
     public String displayAddSkillForm(Model model) {

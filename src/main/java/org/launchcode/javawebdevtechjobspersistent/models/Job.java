@@ -3,8 +3,8 @@ package org.launchcode.javawebdevtechjobspersistent.models;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Job extends AbstractEntity{
@@ -13,12 +13,12 @@ public class Job extends AbstractEntity{
     private Employer employer;
 
     @ManyToMany
-    private String skills;
+    private List<Skill> skills = new ArrayList<>();
 
-    public Job(Employer employer, String skills) {
+    public Job(Employer anEmployer, List<Skill> someSkills) {
         super();
-        this.employer = employer;
-        this.skills = skills;
+        this.employer = anEmployer;
+        this.skills = someSkills;
     }
 
     public Job() {}
@@ -28,10 +28,6 @@ public class Job extends AbstractEntity{
     public Employer getEmployer() { return employer; }
     public void setEmployer(Employer employer) { this.employer = employer; }
 
-    public String getSkills() {
-        return skills;
-    }
-    public void setSkills(String skills) {
-        this.skills = skills;
-    }
+    public List<Skill> getSkills() { return skills; }
+    public void setSkills(List<Skill> skills) { this.skills = skills; }
 }

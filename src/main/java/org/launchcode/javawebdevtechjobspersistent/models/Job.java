@@ -1,7 +1,10 @@
 package org.launchcode.javawebdevtechjobspersistent.models;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Job extends AbstractEntity{
@@ -9,16 +12,16 @@ public class Job extends AbstractEntity{
     @ManyToOne
     private Employer employer;
 
+    @ManyToMany
     private String skills;
 
-    public Job() {
+    public Job(Employer employer, String skills) {
+        super();
+        this.employer = employer;
+        this.skills = skills;
     }
 
-    public Job(Employer anEmployer, String someSkills) {
-        super();
-        this.employer = anEmployer;
-        this.skills = someSkills;
-    }
+    public Job() {}
 
     // Getters and setters.
 
